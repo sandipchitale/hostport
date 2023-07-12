@@ -15,21 +15,17 @@
                     port = 80;
                 }
             }
-            let hostPort = `<td>${urlObject.hostname}:${port}</td>`;
+            let requestUrl = `<td title="${request.request.url}">${request.request.url}</td>`;
             let status = `<td>${request.response.status}</td>`;
             let location = `<td>&nbsp;</td>`;
 
             if (request.response.status === 302) {
                 let locationHeader = request.response.headers.find(h => h.name.toLowerCase() === 'location');
                 if (locationHeader) {
-                    location = `<td>${locationHeader.value}</td>`
+                    location = `<td title="${locationHeader.value}">${locationHeader.value}</td>`
                 }
-                hostPort = hostPort.replace('<td', '<td class="redirect"');
-                status = status.replace('<td', '<td class="redirect"');
-                location = location.replace('<td', '<td class="redirect"');
             }
-
-            let tr = `<tr>${hostPort}${status}${location}</tr>`;
+            let tr = `<tr>${requestUrl}${status}${location}</tr>`;
             if (request.response.status === 302) {
                 tr = tr.replace('<tr', '<tr class="redirect"');
             }

@@ -12,6 +12,11 @@
             margin: 0;
         }
 
+        html,body {
+            width: 100vw;
+            height: 100vh;
+        }
+
         .fixTableHead {
             overflow-y: auto;
             height: 110px;
@@ -24,7 +29,8 @@
 
         table {
             border-collapse: collapse;
-            width: 100%;
+            max-width: 98vw;
+            min-width: 98vw;
         }
 
         th,td {
@@ -43,6 +49,21 @@
             text-wrap: none;
         }
 
+        th:nth-child(1),td:nth-child(1) {
+            max-width: 46vw;
+            min-width: 46vw;
+        }
+
+        th:nth-child(2),td:nth-child(2) {
+            max-width: 6vw;
+            min-width: 6vw;
+        }
+
+        th:nth-child(3),td:nth-child(3) {
+            max-width: 46vw;
+            min-width: 46vw;
+        }
+
         .redirect {
             background-color: greenyellow;
         }
@@ -55,6 +76,7 @@
             border-radius: 5px;
             padding-left: 4px;
             padding-right: 4px;
+            margin-right: 4px
         }
 
     </style>
@@ -63,7 +85,7 @@
     <table class="fixTableHead">
         <thead>
             <tr>
-                <th><button id="clear">Clear</button> Request Host:Port</th>
+                <th><button id="clear">Clear</button>Request</th>
                 <th>Status</th>
                 <th>Redirect Location</th>
             </tr>
