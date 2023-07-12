@@ -15,12 +15,12 @@
                     port = 80;
                 }
             }
-            let hostPort = `<td>${urlObject.host}:${port}</td>`;
+            let hostPort = `<td>${urlObject.hostname}:${port}</td>`;
             let status = `<td>${request.response.status}</td>`;
             let location = `<td>&nbsp;</td>`;
 
             if (request.response.status === 302) {
-                let locationHeader = request.response.headers.find(h => h.name === 'location');
+                let locationHeader = request.response.headers.find(h => h.name.toLowerCase() === 'location');
                 if (locationHeader) {
                     location = `<td>${locationHeader.value}</td>`
                 }
