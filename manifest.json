@@ -1,0 +1,10 @@
+{
+  "name": "hostport",
+  "version": "1.0.6",
+  "description": "Chrome Devetools Host and Port change monitor.",
+  "icons": {
+    "128": "icons/hostport128.png"
+  },
+  "devtools_page": "hostport.html",
+  "manifest_version": 3
+}

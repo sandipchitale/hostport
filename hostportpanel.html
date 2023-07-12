@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Host Port Monitor Panel</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .fixTableHead {
+            overflow-y: auto;
+            height: 110px;
+        }
+
+        .fixTableHead thead tr {
+            position: sticky;
+            top: 0;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,td {
+            text-align: start;
+        }
+
+        thead > tr {
+            background-color: #ddd;
+        }
+
+        th,td {
+            padding: 5px;
+        }
+
+        td.no-wrap {
+            text-wrap: none;
+        }
+
+        .redirect {
+            background-color: greenyellow;
+        }
+
+        tr:nth-child(even) {
+            background-color: #eee;
+        }
+
+        #clear {
+            border-radius: 5px;
+            padding-left: 4px;
+            padding-right: 4px;
+        }
+
+    </style>
+</head>
+<body>
+    <table class="fixTableHead">
+        <thead>
+            <tr>
+                <th><button id="clear">Clear</button> Request Host:Port</th>
+                <th>Status</th>
+                <th>Redirect Location</th>
+            </tr>
+        </thead>
+        <tbody id="tb">
+        </tbody>
+    </table>
+    <script src="hostportpanel.js"></script>
+</body>
+</html>
