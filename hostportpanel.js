@@ -5,28 +5,23 @@
         tb.innerHTML = '';
     });
     chrome.devtools.network.onRequestFinished.addListener(function(request) {
+        function isRedirect(port) {
+            return (port >=300 && port <= 310);
+        }
         if (request.request.url.startsWith('http')) {
-            const urlObject = new URL(request.request.url);
-            let port = urlObject.port;
-            if (!port) {
-                if (request.request.url.startsWith('https')) {
-                    port = 443;
-                } else {
-                    port = 80;
-                }
-            }
+            let method = `<td>${request.request.method}</td>`;
             let requestUrl = `<td title="${request.request.url}">${request.request.url}</td>`;
             let status = `<td>${request.response.status}</td>`;
             let location = `<td>&nbsp;</td>`;
 
-            if (request.response.status === 302) {
+            if (isRedirect(request.response.status)) {
                 let locationHeader = request.response.headers.find(h => h.name.toLowerCase() === 'location');
                 if (locationHeader) {
                     location = `<td title="${locationHeader.value}">${locationHeader.value}</td>`
                 }
             }
-            let tr = `<tr>${requestUrl}${status}${location}</tr>`;
-            if (request.response.status === 302) {
+            let tr = `<tr>${method}${requestUrl}${status}${location}</tr>`;
+            if (isRedirect(request.response.status)) {
                 tr = tr.replace('<tr', '<tr class="redirect"');
             }
             tb.innerHTML += tr;
